@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.app-drip-wechat-client {
+				position: relative;
+				font-family: PingFangSC-Regular;
+				-webkit-touch-callout: none;
+				-webkit-overflow-scrolling: auto;
+				overflow: auto;
+				height: 100%;
+				width: 100%;
+				padding: 0;
+				margin: 0;
+			}
+			.v-login-bind-mobile {
+				position: relative;
+				height: 100%;
+				overflow: hidden;
+			}
+			.v-login-bind-mobile .main-wrapper {
+				text-align: center;
+				background: #fff;
+				padding: 2.5rem 1.875rem 0;
+			}
+			.v-login-bind-mobile .avatar-img {
+				width: 4.5rem;
+				height: 4.5rem;
+				border-radius: 50%;
+			}
+			.pt10 {
+				padding-top: .625rem!important;
+			}
+			.v-login-bind-mobile .form-input {
+				margin-top: .625rem;
+				font-size: .875rem;
+				padding: .75rem .5rem .625rem;
+				border: 1px solid #d5d5d5!important;
+				position: relative;
+			}
+			.v-login-bind-mobile .form-input:first-of-type {
+				margin-top: 2.5rem;
+			}
+			.v-login-bind-mobile .form-input span{
+				position: absolute;
+				top: 0;
+				transform: translateY(50%);
+				right:.5rem;
+				color: #f00;
+			}
+			.v-login-bind-mobile .form-input .gray{
+				color: #666;
+			}
+			.components-text-input input {
+				border: none;
+				display: block;
+				outline: none;
+				padding-right: 1.5rem;
+				background: transparent;
+			}
+			.v-login-bind-mobile .btn {
+				padding: .75rem 0 .625rem;
+				margin: 1.25rem auto;
+				font-size: 1rem;
+				background: #df2413;
+				color: #fff;
+				border-radius: .3125rem;
+				border:none;
+				display: block;
+				width:100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="drip-wechat-client" class="app-drip-wechat-client">
+			<section class="v-login-bind-mobile">
+				<div class="main-wrapper">
+					<img src="http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqwcfotKm4M678VMmYBKcGSxFQ6L5jGkxJvTfpSBsWpicvCu0exQxZe916IkO9emEWCePDcicz4Eic0w/132" class="avatar-img">
+					<p class="f14 font-green pt10">为保证您的权益，请正确输入您的手机号！</p>
+					<div class="components-text-input form-input">
+						<input placeholder="请填写您的手机号" maxlength="11" type="tel">
+					</div>
+					<div class="components-text-input form-input">
+						<input placeholder="请填写验证码" maxlength="6" type="tel">
+						<span id="code">发送验证码</span>
+					</div>
+					<button class="btn btn-block btn-primary">登录</button>
+				</div>
+				<!---->
+			</section>
+			<!---->
+			<!---->
+		</div>
+	</body>
+	<script type="text/javascript">
+		var num = 60;
+		var timer = null;
+		var oCode = document.getElementById('code');
+		oCode.onclick = function(){
+			if(num==60){
+				timer = setInterval(function(){
+					num--
+					if(num){
+						oCode.innerHTML = num + '秒后发送'
+						oCode.className = 'gray'
+					}else{
+						clearInterval(timer)
+						oCode.innerHTML = '发送验证码'
+						oCode.className = ''
+					}
+				},1000)
+			}
+		}
+	</script>
+</html>
